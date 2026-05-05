@@ -1,0 +1,31 @@
+name: HTML Validator
+
+# 1. Define cuándo se va a ejecutar esta acción
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# 2. Define el trabajo (job) que se va a realizar
+jobs:
+  validate-html:
+    name: Validar sintaxis HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso A: Descarga tu código en el servidor virtual de GitHub
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      # Paso B: Prepara el entorno instalando Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Paso C: Ejecuta el validador oficial de la W3C en tu archivo index.html
+      - name: Ejecutar validador W3C
+        run: npx w3c-html-validator index.html
