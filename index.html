@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reserva de Aulas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e1e4e8;
+        }
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <header>
+            <h1>Sistema de Reserva de Aulas</h1>
+            <p>Documentación y diseño del sistema para la universidad</p>
+        </header>
+
+        <main>
+            <section id="introduccion">
+                <h2>Introducción</h2>
+                <p>Bienvenido a la documentación del nuevo Sistema de Reserva de Aulas. Este sistema ha sido diseñado para facilitar a los estudiantes la gestión y solicitud de espacios físicos dentro de la universidad para realizar proyectos, reuniones o tutorías. A continuación, se detallan los diagramas principales que explican la arquitectura y el flujo de trabajo del sistema.</p>
+            </section>
+
+            <section id="casos-de-uso">
+                <h2>1. Diagrama de Casos de Uso</h2>
+                <p>Este diagrama muestra las interacciones principales entre los usuarios (actores) y el sistema. En este modelo identificamos a dos actores clave:</p>
+                <ul>
+                    <li><strong>Cuenta Habiente:</strong> Representa al usuario general del sistema. Puede registrarse, consultar la disponibilidad de las aulas, realizar una reserva y cancelar una reserva si ya no es necesaria.</li>
+                    <li><strong>Técnico:</strong> Es el encargado de administrar y gestionar las peticiones, teniendo la facultad de aprobar o rechazar las solicitudes de reserva realizadas por los cuentas habientes.</li>
+                </ul>
+                <div class="diagram-container">
+                    <img src="img/Casos de Uso.png" alt="Diagrama de Casos de Uso">
+                </div>
+            </section>
+
+            <section id="actividades">
+                <h2>2. Diagrama de Actividades</h2>
+                <p>El diagrama de actividades detalla el flujo de los procesos paso a paso, dividiendo las responsabilidades en tres carriles: <strong>Alumno, Sistema y Administrador del Sistema</strong>.</p>
+                <p>El flujo principal comienza cuando el alumno verifica si tiene cuenta, procede a registrarse o iniciar sesión y accede al menú. A partir de ahí, puede:</p>
+                <ul>
+                    <li><strong>Hacer una reserva:</strong> El sistema le muestra las aulas y horarios, el alumno escoge, y la solicitud pasa al administrador. El administrador consulta las solicitudes y decide si aprueba o no, desencadenando notificaciones.</li>
+                    <li><strong>Cancelar reserva:</strong> El sistema muestra las reservas activas, el alumno escoge cuál cancelar, y el sistema actualiza la base de datos de manera directa.</li>
+                </ul>
+                <div class="diagram-container">
+                    <img src="img/Diagrama de Actividades.png" alt="Diagrama de Actividades">
+                </div>
+            </section>
+
+            <section id="entidad-relacion">
+                <h2>3. Diagrama Entidad-Relación</h2>
+                <p>Este diagrama modela la estructura de la base de datos necesaria para soportar el sistema de reservas. Se compone de cuatro entidades principales:</p>
+                <ul>
+                    <li><strong>ALUMNO:</strong> Almacena la información de los estudiantes (ID, nombre, correo institucional único y contraseña).</li>
+                    <li><strong>AULA:</strong> Contiene el catálogo de espacios de la universidad (ID, nombre/número y capacidad).</li>
+                    <li><strong>ADMINISTRADOR:</strong> Guarda los accesos del personal encargado de gestionar el sistema (ID, nombre, correo y contraseña).</li>
+                    <li><strong>RESERVA:</strong> Es la entidad transaccional que une al alumno, al aula y al administrador. Registra las fechas, horas, el estado de la solicitud y el motivo del uso.</li>
+                </ul>
+                <div class="diagram-container">
+                    <img src="img/Diagrama Entidad Relacion.png" alt="Diagrama Entidad Relacion">
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
